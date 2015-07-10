@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package reactor.core.processor;
+package reactor.core.publisher;
 
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;
 import org.reactivestreams.tck.PublisherVerification;
 import org.reactivestreams.tck.TestEnvironment;
 import org.testng.annotations.Test;
-import reactor.core.reactivestreams.LogPublisher;
-import reactor.core.reactivestreams.PublisherFactory;
+import reactor.core.Publishers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -39,9 +38,9 @@ public class PublisherFactoryTests extends PublisherVerification<Long> {
     @Override
     public Publisher<Long> createPublisher(long elements) {
         return
-          LogPublisher.log(
-            PublisherFactory.barrier(
-              PublisherFactory.<Long, AtomicLong>forEach(
+          Publishers.log(
+            Publishers.barrier(
+              Publishers.<Long, AtomicLong>forEach(
                 (s) -> {
                     long cursor = s.context().getAndIncrement();
                     if (cursor < elements) {

@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package reactor.core.processor;
+package reactor.core.subscriber;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.tck.SubscriberWhiteboxVerification;
 import org.reactivestreams.tck.TestEnvironment;
 import org.testng.annotations.Test;
-import reactor.core.reactivestreams.PublisherFactory;
-import reactor.core.reactivestreams.SubscriberFactory;
+import reactor.core.Publishers;
+import reactor.core.Subscribers;
 
 import java.util.Random;
 
@@ -38,7 +38,7 @@ public class SubscriberFactoryTests extends SubscriberWhiteboxVerification<Long>
 
 	@Override
 	public Subscriber<Long> createSubscriber(final WhiteboxSubscriberProbe<Long> probe) {
-		return SubscriberFactory.create(
+		return Subscribers.create(
 				subscription -> {
 					probe.registerOnSubscribe(new SubscriberWhiteboxVerification.SubscriberPuppet() {
 
@@ -75,13 +75,13 @@ public class SubscriberFactoryTests extends SubscriberWhiteboxVerification<Long>
 	@org.junit.Test
 	public void someTest() {
 
-		PublisherFactory.forEach(sub ->
-						sub.onNext(random.nextLong())
-		).subscribe(SubscriberFactory.unbounded(
-				(data, sub) -> {
-					System.out.println(data);
-					sub.cancel();
-				}
+		Publishers.forEach(sub ->
+			sub.onNext(random.nextLong())
+		).subscribe(Subscribers.unbounded(
+		  (data, sub) -> {
+			  System.out.println(data);
+			  sub.cancel();
+		  }
 		));
 	}
 }

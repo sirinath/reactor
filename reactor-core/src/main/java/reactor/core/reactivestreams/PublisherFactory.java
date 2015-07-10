@@ -46,7 +46,7 @@ import java.util.concurrent.atomic.AtomicLongFieldUpdater;
  * @author Stephane Maldini
  * @since 2.0.2
  */
-public final class PublisherFactory {
+public abstract class PublisherFactory {
 
 	/**
 	 * Create a {@link Publisher} reacting on requests with the passed {@link BiConsumer}
@@ -428,6 +428,9 @@ public final class PublisherFactory {
 
 		@Override
 		public void subscribe(Subscriber<? super O> s) {
+			if(s == null){
+				throw SpecificationExceptions.spec_2_13_exception();
+			}
 			source.subscribe(barrierProvider.apply(s));
 		}
 

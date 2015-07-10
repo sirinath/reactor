@@ -48,7 +48,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author Stephane Maldini
  * @since 2.0.3
  */
-public final class SubscriberFactory {
+public abstract class SubscriberFactory {
 
 	/**
 	 * Create a {@link Subscriber} reacting onSubscribe with the passed {@link Consumer}

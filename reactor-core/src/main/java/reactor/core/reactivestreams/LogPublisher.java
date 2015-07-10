@@ -33,16 +33,6 @@ public final class LogPublisher<IN> implements Publisher<IN> {
     /**
      *
      * @param publisher
-     * @param <IN>
-     * @return
-     */
-    public static <IN> Publisher<IN> log(Publisher<? extends IN> publisher){
-        return log(publisher, null);
-    }
-
-    /**
-     *
-     * @param publisher
      * @param category
      * @param <IN>
      * @return
@@ -92,7 +82,7 @@ public final class LogPublisher<IN> implements Publisher<IN> {
         @Override
         protected void doOnSubscribe(Subscription subscription) {
             if(log.isInfoEnabled()){
-                log.info("onSubscribe({})", this.subscription);
+                log.info("⇩ onSubscribe({})", this.subscription);
             }
             super.doOnSubscribe(subscription);
         }
@@ -100,7 +90,7 @@ public final class LogPublisher<IN> implements Publisher<IN> {
         @Override
         protected void doNext(IN in) {
             if(log.isInfoEnabled()){
-                log.info("onNext({})", in);
+                log.info("↓ onNext({})", in);
             }
             super.doNext(in);
         }
@@ -108,7 +98,7 @@ public final class LogPublisher<IN> implements Publisher<IN> {
         @Override
         protected void doError(Throwable throwable) {
             if(log.isErrorEnabled()){
-                log.error("onError({})", throwable);
+                log.error("↯ onError({})", throwable);
             }
             super.doError(throwable);
         }
@@ -116,7 +106,7 @@ public final class LogPublisher<IN> implements Publisher<IN> {
         @Override
         protected void doComplete() {
             if(log.isInfoEnabled()){
-                log.info("onComplete()");
+                log.info("↧ onComplete()");
             }
             super.doComplete();
         }
@@ -124,7 +114,7 @@ public final class LogPublisher<IN> implements Publisher<IN> {
         @Override
         protected void doRequest(long n) {
             if(log.isInfoEnabled()){
-                log.info("request({})", n);
+                log.info("⇡ request({})", n);
             }
             super.doRequest(n);
         }
@@ -132,7 +122,7 @@ public final class LogPublisher<IN> implements Publisher<IN> {
         @Override
         protected void doCancel() {
             if(log.isInfoEnabled()){
-                log.info("cancel()");
+                log.info("↥ cancel()");
             }
             super.doCancel();
         }
