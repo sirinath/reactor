@@ -16,7 +16,7 @@
 package reactor.rx.action.control;
 
 import org.reactivestreams.Subscription;
-import reactor.core.Dispatcher;
+import reactor.ReactorProcessor;
 import reactor.core.dispatch.SynchronousDispatcher;
 import reactor.core.dispatch.TailRecurseDispatcher;
 import reactor.fn.Consumer;
@@ -30,22 +30,22 @@ import java.util.concurrent.atomic.AtomicLongFieldUpdater;
  */
 public final class DispatcherAction<T> extends Action<T, T> {
 
-	private final Dispatcher dispatcher;
-	private final Dispatcher requestDispatcher;
+	private final ReactorProcessor dispatcher;
+	private final ReactorProcessor requestDispatcher;
 
 	private volatile long pendingRequests = 0l;
 
 	private final AtomicLongFieldUpdater<DispatcherAction> PENDING_UPDATER =
-			AtomicLongFieldUpdater.newUpdater(DispatcherAction.class, "pendingRequests");
+	  AtomicLongFieldUpdater.newUpdater(DispatcherAction.class, "pendingRequests");
 
 
-	public DispatcherAction(Dispatcher dispatcher, Dispatcher requestDispatcher) {
+	public DispatcherAction(ReactorProcessor dispatcher, ReactorProcessor requestDispatcher) {
 		this.dispatcher = dispatcher;
 		this.requestDispatcher = requestDispatcher != SynchronousDispatcher.INSTANCE ? dispatcher : requestDispatcher;
 	}
 
 	@Override
-	public boolean isReactivePull(Dispatcher dispatcher, long producerCapacity) {
+	public boolean isReactivePull(ReactorProcessor dispatcher, long producerCapacity) {
 		return this.dispatcher != dispatcher;
 	}
 
@@ -162,7 +162,7 @@ public final class DispatcherAction<T> extends Action<T, T> {
 	}
 
 	@Override
-	public Dispatcher getDispatcher() {
+	public ReactorProcessor getDispatcher() {
 		return dispatcher;
 	}
 

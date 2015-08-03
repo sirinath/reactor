@@ -18,7 +18,7 @@ package reactor.core.processor;
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscription;
 import org.reactivestreams.tck.TestEnvironment;
-import reactor.core.Publishers;
+import reactor.Publishers;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;

@@ -19,8 +19,8 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.tck.SubscriberWhiteboxVerification;
 import org.reactivestreams.tck.TestEnvironment;
 import org.testng.annotations.Test;
-import reactor.core.Publishers;
-import reactor.core.Subscribers;
+import reactor.Publishers;
+import reactor.Subscribers;
 
 import java.util.Random;
 

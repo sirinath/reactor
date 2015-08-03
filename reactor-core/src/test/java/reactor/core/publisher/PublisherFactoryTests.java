@@ -20,7 +20,7 @@ import org.reactivestreams.Subscription;
 import org.reactivestreams.tck.PublisherVerification;
 import org.reactivestreams.tck.TestEnvironment;
 import org.testng.annotations.Test;
-import reactor.core.Publishers;
+import reactor.Publishers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
