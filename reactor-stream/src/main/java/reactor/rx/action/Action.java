@@ -29,7 +29,7 @@ import reactor.core.queue.CompletableQueue;
 import reactor.core.support.Bounded;
 import reactor.core.error.Exceptions;
 import reactor.core.support.Recyclable;
-import reactor.core.support.SpecificationExceptions;
+import reactor.core.error.SpecificationExceptions;
 import reactor.fn.Consumer;
 import reactor.fn.Supplier;
 import reactor.fn.tuple.Tuple;

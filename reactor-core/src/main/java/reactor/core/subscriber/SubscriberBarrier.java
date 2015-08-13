@@ -19,7 +19,7 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import reactor.core.error.Exceptions;
 import reactor.core.support.Bounded;
-import reactor.core.support.SpecificationExceptions;
+import reactor.core.error.SpecificationExceptions;
 
 /**
  * A {@link Subscriber} with an asymetric typed wrapped subscriber. Yet it represents a unique relationship between

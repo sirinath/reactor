@@ -21,7 +21,7 @@ import org.reactivestreams.Subscription;
 import reactor.core.processor.rb.MutableSignal;
 import reactor.core.processor.rb.RingBufferSubscriberUtils;
 import reactor.core.error.CancelException;
-import reactor.core.support.SpecificationExceptions;
+import reactor.core.error.SpecificationExceptions;
 import reactor.jarjar.com.lmax.disruptor.*;
 import reactor.jarjar.com.lmax.disruptor.dsl.ProducerType;
 

@@ -22,7 +22,7 @@ import reactor.core.subscriber.SubscriberBarrier;
 import reactor.core.subscriber.SubscriberWithContext;
 import reactor.core.support.Assert;
 import reactor.core.error.Exceptions;
-import reactor.core.support.SpecificationExceptions;
+import reactor.core.error.SpecificationExceptions;
 import reactor.fn.BiConsumer;
 import reactor.fn.Consumer;
 import reactor.fn.Function;

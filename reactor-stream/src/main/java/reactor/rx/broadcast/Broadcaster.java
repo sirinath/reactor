@@ -271,22 +271,7 @@ public class Broadcaster<O> extends Action<O, O> {
 				_downstreamSubscription.updatePendingRequests(elements);
 			}
 		}
-	}
-
-
-	/*@Override
-	protected void requestUpstream(long capacity, boolean terminated, long elements) {
-		requestMore(elements);
-	}
-
-	@Override
-	public void requestMore(long n) {
-		Action.checkRequest(n);
-		PushSubscription<O> upstreamSubscription = this.upstreamSubscription;
-		if(upstreamSubscription != null) {
-			dispatcher.dispatch(n, upstreamSubscription, null);
-		}
-	}*/
+	}/
 
 
 }
